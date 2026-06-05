@@ -3,6 +3,8 @@ import HeroSection from './components/HeroSection'
 import SectionLegacy from './sections/SectionLegacy'
 import SectionAbout from './sections/SectionAbout'
 import SectionTimeline from './sections/SectionTimeline'
+import SectionContact from './sections/SectionContact'
+import SectionFooter from './sections/SectionFooter'
 
 /* ═══════════════════════════════════════════════════════════════
    hackX 11.0
@@ -47,6 +49,8 @@ export default function App() {
       <SectionLegacy />
       <SectionAbout />
       <SectionTimeline />
+      <SectionContact />
+      <SectionFooter />
     </div>
   )
 }
