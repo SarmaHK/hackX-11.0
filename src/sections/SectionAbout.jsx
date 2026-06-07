@@ -187,29 +187,23 @@ export default function SectionAbout() {
           <div className="showcase-content">
 
             {/* ══════════ LEFT: Typography ══════════ */}
-            <div className="showcase-left">
-              <motion.h2 className="about-heading"
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.9, delay: 0.15 }}>
-                <span className="ah-white">WHAT IS</span>
-                <span className="ah-hackx-row">
-                  <span className="ah-cyan">hackX</span>
-                  <span className="ah-version">11.0</span>
-                </span>
-              </motion.h2>
+            <div className="showcase-left" style={{ justifyContent: 'center', alignItems: 'center', gap: '3.5rem' }}>
 
-              <motion.p className="about-description"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
+              {/* ── Brief Intro Text ── */}
+              <motion.div
+                className="flex items-center gap-5 max-w-[480px]"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.9, delay: 0.3 }}>
-                hackX 11.0 is the flagship innovation and entrepreneurship challenge organized by
-                IMSSA. It brings together universities, mentors, startups, and industry leaders to
-                transform innovative ideas into real-world impact through a structured journey of
-                collaboration, creation, and competition.
-              </motion.p>
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                {/* Rounded vertical accent bar */}
+                <div className="w-[4px] h-[80px] bg-slate-300 rounded-full shrink-0 shadow-[0_0_10px_rgba(203,213,225,0.3)]" />
+
+                <p className="text-[17px] text-slate-300 font-body leading-relaxed">
+                  <strong className="text-white font-bold text-[19px]">hackX</strong> is Sri Lanka's premier inter-university startup challenge, organized by the <strong className="text-white font-bold text-[19px]">IMSSA</strong> of the University of Kelaniya.
+                </p>
+              </motion.div>
 
               {/* ── Innovation Glass Card ── */}
               <motion.div className="about-glass-card"

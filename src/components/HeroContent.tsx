@@ -1,5 +1,6 @@
 import { motion, useMotionValue, useSpring } from 'framer-motion'
 import { useRef } from 'react'
+import { ChevronDown } from 'lucide-react'
 
 /* ═══════════════════════════════════════════════════════════════
    HERO CONTENT — hackX 11.0
@@ -48,7 +49,7 @@ function MagneticPrimaryButton() {
       <motion.a
         ref={ref}
         href="#register"
-        className="btn-primary"
+        className="relative px-8 py-3 rounded-full border border-cyan-400/80 bg-[#061428]/80 text-white font-display font-semibold text-[15px] tracking-wide shadow-[0_0_15px_rgba(34,211,238,0.3)] hover:shadow-[0_0_25px_rgba(34,211,238,0.5)] transition-shadow duration-300 backdrop-blur-md flex items-center justify-center"
         onMouseMove={handleMouse}
         onMouseLeave={reset}
         style={{ x: springX, y: springY }}
@@ -66,12 +67,12 @@ function EventBookletButton() {
   return (
     <motion.a
       href="#booklet"
-      className="btn-secondary group"
+      className="relative px-8 py-3 rounded-full border border-blue-600/80 bg-[#08122a]/80 text-white font-display font-semibold text-[15px] tracking-wide hover:shadow-[0_0_20px_rgba(37,99,235,0.4)] transition-shadow duration-300 backdrop-blur-md flex items-center justify-center"
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       transition={{ type: "spring", stiffness: 400, damping: 17 }}
     >
-      <span className="relative z-10 flex items-center justify-center">
+      <span className="relative z-10">
         Event Booklet
       </span>
     </motion.a>
@@ -144,13 +145,31 @@ export default function HeroContent() {
 
       {/* ── CTA Buttons ── */}
       <motion.div
-        className="mt-20 md:mt-32 flex flex-col sm:flex-row items-center gap-4 sm:gap-6"
+        className="mt-16 md:mt-24 flex flex-row items-center justify-center gap-4 sm:gap-6"
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1.2, ease, delay: 1.1 }}
       >
         <MagneticPrimaryButton />
         <EventBookletButton />
+      </motion.div>
+
+      {/* ── Scroll Down Indicator ── */}
+      <motion.div
+        className="mt-16 md:mt-20 flex flex-col items-center justify-center gap-2 cursor-pointer group"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 1.2, delay: 1.5 }}
+        onClick={() => window.scrollTo({ top: window.innerHeight, behavior: 'smooth' })}
+      >
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+          className="flex flex-col items-center gap-2"
+        >
+          <span className="text-xs font-display tracking-widest uppercase text-cyan-400/60 group-hover:text-cyan-400 transition-colors">Scroll Down</span>
+          <ChevronDown className="w-6 h-6 text-cyan-400/60 group-hover:text-cyan-400 transition-colors" />
+        </motion.div>
       </motion.div>
     </div>
   )

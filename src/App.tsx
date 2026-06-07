@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import HeroSection from './components/HeroSection'
 import SectionLegacy from './sections/SectionLegacy'
 import SectionAbout from './sections/SectionAbout'
+import SectionWhyJoin from './sections/SectionWhyJoin'
 import SectionTimeline from './sections/SectionTimeline'
 import SectionContact from './sections/SectionContact'
 import SectionFooter from './sections/SectionFooter'
@@ -48,6 +49,7 @@ export default function App() {
       <HeroSection />
       <SectionLegacy />
       <SectionAbout />
+      <SectionWhyJoin />
       <SectionTimeline />
       <SectionContact />
       <SectionFooter />
