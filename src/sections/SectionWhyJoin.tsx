@@ -1,6 +1,6 @@
-import { useRef, useEffect, useState } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sprout, Users, Trophy, CircleDollarSign, ArrowRight } from 'lucide-react';
+import { Sprout, Users, Trophy, CircleDollarSign, ArrowRight, Target } from 'lucide-react';
 
 const features = [
   {
