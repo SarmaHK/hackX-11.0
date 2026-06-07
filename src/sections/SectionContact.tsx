@@ -1,5 +1,5 @@
 import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 /* ═══════════════════════════════════════════════════════════════
    SECTION: CONTACT — PREMIUM MODERN CARDS
@@ -38,7 +38,6 @@ const teamMembers = [
 
 export default function SectionContact() {
   const sectionRef = useRef<HTMLElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: '-80px' })
 
   // Render a single card to reuse in the marquee groups
   const renderCard = (member: typeof teamMembers[0], keySuffix: string) => (
