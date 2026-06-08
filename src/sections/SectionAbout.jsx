@@ -110,9 +110,14 @@ export default function SectionAbout() {
     }
 
     const frameCount = 160
-    const currentFrame = index => (
-      `/assets/aboutbg/ezgif-frame-${(index + 1).toString().padStart(3, '0')}.png`
-    )
+    
+    // Offset by 80 frames so the straight pose (frame 0) happens exactly at the middle of the scroll
+    const frameOffset = 80 
+    
+    const currentFrame = index => {
+      const actualIndex = (index + frameOffset) % frameCount
+      return `/assets/aboutbg/ezgif-frame-${(actualIndex + 1).toString().padStart(3, '0')}.webp`
+    }
 
     const images = []
     const frames = { frame: 0 }
@@ -149,9 +154,9 @@ export default function SectionAbout() {
       ease: 'none',
       scrollTrigger: {
         trigger: sectionRef.current,
-        start: 'top bottom', /* Starts animation as soon as the top of About section enters the bottom of the screen */
-        end: 'bottom top', /* Lengthen scroll distance to slow down the frame change speed */
-        scrub: 1, /* Smooths the frame changing (takes 1 second to catch up) */
+        start: 'top 65%', /* Start rotating slightly after it enters screen */
+        end: 'bottom 55%', /* Finish rotating before it fully leaves */
+        scrub: 0.5, /* Reduced lag so the rotation feels immediate and responsive */
       },
       onUpdate: render
     })
