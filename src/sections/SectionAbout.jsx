@@ -156,7 +156,7 @@ export default function SectionAbout() {
         trigger: sectionRef.current,
         start: 'top 65%', /* Start rotating slightly after it enters screen */
         end: 'bottom 55%', /* Finish rotating before it fully leaves */
-        scrub: 0.5, /* Reduced lag so the rotation feels immediate and responsive */
+        scrub: 1.5, /* Increased scrub to add smooth inertia and eliminate choppy scrolling */
       },
       onUpdate: render
     })
@@ -172,6 +172,8 @@ export default function SectionAbout() {
 
   return (
     <section id="about" className="about-section" ref={sectionRef}>
+      {/* Background Ambient Glow (matching Contact section) */}
+      <div className="cps-ambient-glow"></div>
 
       <div className="about-sticky-wrapper">
         <div className="about-top-badge-container">

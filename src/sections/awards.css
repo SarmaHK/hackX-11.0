@@ -1,0 +1,269 @@
+/* src/sections/awards.css */
+
+.awards-section {
+  position: relative;
+  min-height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 4rem 1rem;
+}
+
+.awards-video-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%);
+}
+
+.awards-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    180deg,
+    transparent 0%,
+    rgba(0,10,20,.75) 15%,
+    rgba(0,15,25,.55) 50%,
+    rgba(0,10,20,.8) 85%,
+    transparent 100%
+  );
+  z-index: 1;
+}
+
+.awards-content {
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.awards-title {
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #fff;
+  text-transform: uppercase;
+  text-shadow: 0 0 20px rgba(0, 200, 255, 0.5), 0 0 40px rgba(0, 150, 255, 0.3);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.monuments-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .monuments-container {
+    flex-direction: column;
+    gap: 3rem;
+  }
+}
+
+.awards-monument {
+  position: relative;
+  background: linear-gradient(180deg, rgba(0, 40, 80, 0.2) 0%, rgba(0, 10, 20, 0.5) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem 1.5rem 2rem 1.5rem;
+  /* Elegant organic arched tablet shape */
+  border-radius: 160px 160px 24px 24px;
+  border-top: 2px solid rgba(255, 255, 255, 0.4);
+  border-left: 1px solid rgba(0, 255, 255, 0.2);
+  border-right: 1px solid rgba(0, 255, 255, 0.2);
+  border-bottom: 1px solid rgba(0, 100, 200, 0.4);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+/* Crystal Highlights */
+.awards-monument::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 30%, transparent 70%, rgba(0, 255, 255, 0.1) 100%);
+  box-shadow: inset 0 20px 50px rgba(0, 255, 255, 0.15), inset 0 -20px 50px rgba(0, 0, 0, 0.5);
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Inner decorative relic frame */
+.awards-monument::after {
+  content: '';
+  position: absolute;
+  inset: 12px;
+  border-radius: inherit;
+  border: 1px solid rgba(0, 255, 255, 0.15);
+  border-top: 1px solid rgba(0, 255, 255, 0.4);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.awards-monument:hover {
+  transform: translateY(-10px);
+}
+
+.champion-monument {
+  width: 320px;
+  min-height: 460px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 255, 255, 0.15), inset 0 0 40px rgba(0, 255, 255, 0.1);
+  margin-top: -4rem; /* Elevated position */
+  border-top: 2px solid rgba(255, 215, 0, 0.6);
+}
+
+@media (max-width: 768px) {
+  .champion-monument {
+    margin-top: 0;
+    order: -1; /* Keep champion on top in mobile */
+  }
+}
+
+.champion-monument::before {
+  box-shadow: inset 0 30px 60px rgba(255, 215, 0, 0.1), inset 0 -30px 60px rgba(0, 0, 0, 0.6);
+}
+
+.champion-monument::after {
+  border-top: 1px solid rgba(255, 215, 0, 0.5);
+}
+
+.champion-monument:hover {
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 60px rgba(0, 255, 255, 0.3), inset 0 0 60px rgba(0, 255, 255, 0.2);
+}
+
+.runner-up-monument {
+  width: 260px;
+  min-height: 380px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(0, 150, 255, 0.1), inset 0 0 20px rgba(0, 150, 255, 0.05);
+}
+
+.runner-up-monument:hover {
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 150, 255, 0.2), inset 0 0 30px rgba(0, 150, 255, 0.1);
+}
+
+.monument-place {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.champion-monument .monument-place {
+  color: #00ffff;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.5);
+}
+
+.monument-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+}
+
+.champion-monument .monument-title {
+  font-size: 2.5rem;
+  background: linear-gradient(180deg, #ffffff 0%, #aeeeee 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.monument-prize {
+  font-size: 1.75rem;
+  font-weight: 600;
+  color: #ffaa00; /* Subtle gold */
+  text-shadow: 0 0 15px rgba(255, 170, 0, 0.4);
+}
+
+.runner-up-monument .monument-prize {
+  font-size: 1.35rem;
+  color: #00e5ff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
+}
+
+/* Floating particles */
+.ambient-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 2;
+  overflow: hidden;
+}
+
+.ambient-particle {
+  position: absolute;
+  background: rgba(0, 255, 255, 0.5);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
+  bottom: -5%;
+}
+
+/* Relics & Icons */
+.relic-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 2rem auto;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.15) 0%, transparent 60%);
+  animation: floatRelic 6s ease-in-out infinite;
+}
+
+@keyframes floatRelic {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.champion-relic {
+  width: 130px;
+  height: 130px;
+  background: radial-gradient(circle, rgba(0, 255, 255, 0.25) 0%, rgba(255, 215, 0, 0.1) 40%, transparent 70%);
+}
+
+.runner-up-relic {
+  width: 100px;
+  height: 100px;
+}
+
+.relic-icon {
+  filter: drop-shadow(0 0 10px rgba(0, 255, 255, 0.6));
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.custom-relic-svg {
+  width: 80%;
+  height: 80%;
+}
+
+.champion-relic .relic-icon {
+  color: #ffffff;
+  filter: drop-shadow(0 0 20px rgba(0, 255, 255, 1)) drop-shadow(0 0 10px rgba(255, 255, 255, 0.8));
+}

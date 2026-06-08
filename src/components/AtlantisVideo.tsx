@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 
 /* ─── God Rays (Enhanced) ─── */
 function GodRays() {
@@ -71,10 +71,35 @@ function Bubbles() {
    ═══════════════════════════════════════════════════════════════ */
 
 export default function AtlantisVideo() {
+  const videoRef = useRef<HTMLVideoElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!videoRef.current || !containerRef.current) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            videoRef.current?.play().catch(e => console.error("Video play failed", e))
+          } else {
+            videoRef.current?.pause()
+          }
+        })
+      },
+      { threshold: 0 }
+    )
+    
+    observer.observe(containerRef.current)
+    
+    return () => observer.disconnect()
+  }, [])
+
   return (
-    <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
+    <div ref={containerRef} className="absolute inset-0 w-full h-full overflow-hidden z-0">
       {/* Video — full viewport, enhanced contrast */}
       <video
+        ref={videoRef}
         autoPlay loop muted playsInline
         className="absolute inset-0 w-full h-full object-cover parallax-video"
         style={{ filter: 'brightness(0.7) saturate(1.4) contrast(1.15)' }}

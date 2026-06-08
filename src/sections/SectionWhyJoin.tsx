@@ -60,32 +60,15 @@ export default function SectionWhyJoin() {
   const activeFeature = features[activeIndex];
 
   return (
-    <section
-      ref={sectionRef}
-      className="relative w-full py-24 md:py-32 lg:py-48 overflow-hidden bg-abyss flex flex-col items-center justify-center z-10"
+    <section 
+      id="why-join" 
+      ref={sectionRef} 
+      className="relative w-full py-24 md:py-32 lg:py-48 overflow-hidden flex flex-col items-center justify-center z-10"
     >
-      {/* Abstract Holographic Grid Background */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none bg-abyss">
-        {/* Cyan Grid Pattern */}
-        <div className="absolute inset-0" style={{ 
-            backgroundImage: 'linear-gradient(rgba(0, 229, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 229, 255, 0.03) 1px, transparent 1px)', 
-            backgroundSize: '40px 40px' 
-        }} />
-        
-        {/* Ambient Glows */}
-        <div className="absolute top-[-20%] left-[-10%] w-[50%] h-[50%] rounded-full bg-cyan-900/20 blur-[120px]" />
-        <div className="absolute bottom-[-20%] right-[-10%] w-[50%] h-[50%] rounded-full bg-blue-900/20 blur-[120px]" />
-
-        {/* Depth gradients to blend edges */}
-        <div className="absolute inset-0 bg-gradient-to-b from-abyss via-transparent to-abyss" />
-        <div className="absolute inset-0 bg-gradient-to-r from-abyss via-transparent to-abyss opacity-80" />
-      </div>
-
-      {/* Floating particles */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden opacity-50">
-        <div className="ambient-particle w-2 h-2 top-[20%] left-[15%] animation-delay-0"></div>
-        <div className="ambient-particle w-3 h-3 top-[60%] left-[80%] animation-delay-200"></div>
-        <div className="ambient-particle w-1.5 h-1.5 top-[80%] left-[25%] animation-delay-500"></div>
+      {/* ── Background Elements ── */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        {/* Background Ambient Glow (matching Contact section) */}
+        <div className="cps-ambient-glow"></div>
       </div>
 
       <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl">

@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import GlobalAmbientEffects from './components/GlobalAmbientEffects'
 import HeroSection from './components/HeroSection'
 import SectionLegacy from './sections/SectionLegacy'
 import SectionAbout from './sections/SectionAbout'
@@ -6,7 +7,8 @@ import SectionWhyJoin from './sections/SectionWhyJoin'
 import SectionTimeline from './sections/SectionTimeline'
 import SectionContact from './sections/SectionContact'
 import SectionFooter from './sections/SectionFooter'
-
+import SectionAwards from './sections/SectionAwards'
+import SectionFAQ from './sections/SectionFAQ'
 /* ═══════════════════════════════════════════════════════════════
    hackX 11.0
    Main Application Component
@@ -24,10 +26,16 @@ function useMouseParallax() {
     }
 
     const tick = () => {
-      cx += (tx - cx) * 0.025
-      cy += (ty - cy) * 0.025
-      document.documentElement.style.setProperty('--mx', cx.toFixed(4))
-      document.documentElement.style.setProperty('--my', cy.toFixed(4))
+      const dx = tx - cx
+      const dy = ty - cy
+      
+      if (Math.abs(dx) > 0.001 || Math.abs(dy) > 0.001) {
+        cx += dx * 0.025
+        cy += dy * 0.025
+        document.documentElement.style.setProperty('--mx', cx.toFixed(4))
+        document.documentElement.style.setProperty('--my', cy.toFixed(4))
+      }
+      
       raf = requestAnimationFrame(tick)
     }
 
@@ -46,12 +54,15 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-abyss font-body overflow-x-hidden text-white selection:bg-cyan-accent/20">
+      <GlobalAmbientEffects />
       <HeroSection />
       <SectionLegacy />
       <SectionAbout />
       <SectionWhyJoin />
       <SectionTimeline />
+      <SectionAwards />
       <SectionContact />
+      <SectionFAQ />
       <SectionFooter />
     </div>
   )

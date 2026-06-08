@@ -65,8 +65,7 @@ export default function SectionTimeline() {
     <section id="timeline" className="timeline-section" ref={containerRef}>
       
       {/* ── Background Elements ── */}
-      <div className="timeline-ambient" />
-      <div className="timeline-grid" />
+      <div className="cps-ambient-glow" />
       
       <div className="timeline-container">
         

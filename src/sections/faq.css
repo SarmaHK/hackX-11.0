@@ -1,0 +1,418 @@
+/* src/sections/faq.css */
+
+.faq-section {
+  position: relative;
+  width: 100vw;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 20px 10px 140px 10px;
+  /* background-color: var(--color-abyss); */
+  z-index: 1;
+
+  /* ── Background Layer ── */
+  .faq-bg-wrapper {
+    position: absolute;
+    right: -80%;
+    top: 50%;
+    transform: translateY(-50%) scale(1.4);
+    width: 250%;
+    max-width: 1800px;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .faq-bg-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: saturate(0.8) brightness(0.6);
+    opacity: 0.6;
+  }
+
+  /* ── Layout Container ── */
+  .faq-container {
+    position: relative;
+    width: 100%;
+    max-width: 1400px;
+    min-height: 600px;
+    height: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    z-index: 2;
+    margin: 0 auto;
+  }
+
+  /* ── Left Side: Typography ── */
+  .faq-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-right: 180px;
+  }
+
+  .faq-heading {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+  }
+
+  .faq-subheading {
+    font-size: 1.125rem;
+    color: rgba(0, 229, 255, 0.8);
+    margin-bottom: 4rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .faq-log-block {
+    max-width: 400px;
+    border-left: 2px solid rgba(0, 229, 255, 0.3);
+    padding-left: 20px;
+  }
+
+  .faq-log-title {
+    font-family: "Space Mono", monospace;
+    font-size: 0.875rem;
+    color: #00E5FF;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.2em;
+  }
+
+  .faq-log-text {
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.6);
+    line-height: 1.6;
+  }
+
+  /* ── Right Side: Diver & FAQs ── */
+  .faq-right {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .faq-diver-wrapper {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 40vw;
+    z-index: 5;
+    pointer-events: none;
+  }
+
+  .faq-diver-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: right center;
+    transform: scale(1.25);
+    transform-origin: right center;
+    -webkit-mask-image: linear-gradient(to top, transparent 0%, black 25%, black 100%);
+    mask-image: linear-gradient(to top, transparent 0%, black 25%, black 100%);
+  }
+
+
+
+  /* ── Interactive FAQ Items ── */
+  .faq-items-container {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    pointer-events: none;
+    /* Let clicks pass through except on items */
+  }
+
+  .faq-item {
+    position: absolute;
+    pointer-events: auto;
+    width: 280px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  /* Positions for 6 items distributed around the left of the diver */
+  .faq-item:nth-child(1) {
+    top: 10%;
+    left: -10%;
+  }
+
+  .faq-item:nth-child(2) {
+    top: 25%;
+    left: -30%;
+  }
+
+  .faq-item:nth-child(3) {
+    top: 40%;
+    left: -40%;
+  }
+
+  .faq-item:nth-child(4) {
+    top: 60%;
+    left: -40%;
+  }
+
+  .faq-item:nth-child(5) {
+    top: 75%;
+    left: -25%;
+  }
+
+  .faq-item:nth-child(6) {
+    top: 90%;
+    left: 0%;
+  }
+
+  .faq-item-header {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: 8px;
+  }
+
+  .faq-item-header::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    transition: background 0.3s ease;
+  }
+
+  .faq-item-header::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 100%;
+    width: 30px;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(35deg);
+    transform-origin: left center;
+    transition: background 0.3s ease;
+  }
+
+  .faq-item:hover .faq-item-header::after,
+  .faq-item.active .faq-item-header::after,
+  .faq-item:hover .faq-item-header::before,
+  .faq-item.active .faq-item-header::before {
+    background: rgba(0, 229, 255, 0.6);
+  }
+
+  .faq-number {
+    font-family: "Space Mono", monospace;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.4);
+    margin-bottom: 4px;
+    transition: color 0.3s ease;
+  }
+
+  .faq-question {
+    font-family: "Clash Display", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.85);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    line-height: 1.4;
+    transition: color 0.3s ease;
+  }
+
+  .faq-item:hover .faq-number,
+  .faq-item.active .faq-number {
+    color: #00E5FF;
+  }
+
+  .faq-item:hover .faq-question,
+  .faq-item.active .faq-question {
+    color: #fff;
+  }
+
+  /* ── Master Glass Answer Box ── */
+  .faq-glass-answer-box {
+    position: relative;
+    margin-top: 40px;
+    width: 320px;
+    min-height: 180px;
+    background: rgba(0, 229, 255, 0.03);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(0, 229, 255, 0.2);
+    border-left: 3px solid #00E5FF;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(0, 229, 255, 0.05);
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    pointer-events: none;
+    /* Let clicks pass through if needed, though it's beside the items */
+  }
+
+  .faq-glass-content {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .faq-glass-title {
+    font-family: "Clash Display", sans-serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #00E5FF;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin: 0;
+  }
+
+  .faq-glass-text {
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  .faq-glass-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    opacity: 0.5;
+    text-align: center;
+  }
+
+  .faq-glass-icon {
+    font-family: "Space Mono", monospace;
+    font-size: 2rem;
+    color: #00E5FF;
+    opacity: 0.5;
+  }
+
+  .faq-glass-placeholder p {
+    font-family: "Space Mono", monospace;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.6);
+    letter-spacing: 0.1em;
+    margin: 0;
+  }
+
+  /* ── SVG Sonar Lines ── */
+  .faq-sonar-svg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+  }
+
+  .faq-sonar-path {
+    fill: none;
+    stroke: rgba(0, 229, 255, 0.1);
+    stroke-width: 1px;
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    transition: stroke-dashoffset 0.8s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.3s ease;
+  }
+
+  .faq-sonar-path.active {
+    stroke: rgba(0, 229, 255, 0.5);
+    stroke-dashoffset: 0;
+    filter: drop-shadow(0 0 4px rgba(0, 229, 255, 0.8));
+  }
+
+  .faq-sonar-pulse {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2px;
+    stroke-dasharray: 20 1000;
+    stroke-dashoffset: 1000;
+    filter: drop-shadow(0 0 6px #00E5FF);
+  }
+
+  .faq-sonar-path.active+.faq-sonar-pulse,
+  .active-pulse {
+    animation: sonarPulseAnim 2s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+  }
+
+  @keyframes sonarPulseAnim {
+    0% {
+      stroke-dashoffset: 1000;
+      opacity: 1;
+    }
+
+    80% {
+      stroke-dashoffset: 0;
+      opacity: 1;
+    }
+
+    100% {
+      stroke-dashoffset: 0;
+      opacity: 0;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .faq-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: auto 1fr;
+      gap: 60px;
+    }
+
+    .faq-left {
+      padding-right: 0;
+      text-align: center;
+      align-items: center;
+    }
+
+    .faq-log-block {
+      text-align: left;
+    }
+
+    .faq-diver-wrapper {
+      position: relative;
+      right: 0;
+      top: 0;
+      transform: none;
+      margin: 0 auto;
+      width: 60%;
+    }
+
+    .faq-item {
+      position: relative;
+      top: auto !important;
+      left: auto !important;
+      width: 100%;
+      max-width: 500px;
+      margin: 0 auto 20px auto;
+    }
+
+    .faq-items-container {
+      position: relative;
+      pointer-events: auto;
+      margin-top: 40px;
+    }
+
+    .faq-sonar-svg {
+      display: none;
+      /* Disable sonar lines on mobile for cleaner layout */
+    }
+  }
+}

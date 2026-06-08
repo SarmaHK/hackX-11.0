@@ -372,8 +372,8 @@ body {
 
 .navbar-glass {
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow:
     0 12px 40px rgba(0, 0, 0, 0.25),
@@ -382,8 +382,8 @@ body {
 
 .navbar-glass.scrolled {
   background: rgba(15, 25, 45, 0.65);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow:
     0 16px 48px rgba(0, 0, 0, 0.4),
@@ -404,8 +404,8 @@ body {
   width: 130px;
   height: 60px;
   background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(32px);
-  -webkit-backdrop-filter: blur(32px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   border-radius: 0 0 24px 24px;
   border: 1px solid rgba(255, 255, 255, 0.15);
   border-top: none;
@@ -778,6 +778,8 @@ body {
   inset: -2%;
   z-index: 0;
   will-change: transform;
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
 }
 
 .legacy-bg-image {
@@ -792,17 +794,19 @@ body {
 .legacy-overlay-dark {
   position: absolute;
   inset: 0;
+  background: rgba(1, 8, 20, 0.55);
   z-index: 1;
-  background: rgba(0, 0, 0, 0.25);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
 }
 
 .legacy-overlay-vignette {
   position: absolute;
   inset: 0;
   z-index: 2;
-  background: radial-gradient(ellipse 65% 55% at 50% 50%,
-      transparent 20%,
-      rgba(0, 0, 0, 0.7) 100%);
+  background: radial-gradient(circle at center, transparent 40%, rgba(1, 8, 20, 0.8) 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
+  mask-image: linear-gradient(to bottom, black 0%, black 70%, transparent 100%);
   pointer-events: none;
 }
 
@@ -824,7 +828,8 @@ body {
   right: 0;
   height: 200px;
   z-index: 3;
-  background: linear-gradient(to top, var(--color-abyss) 0%, transparent 100%);
+  /* background: linear-gradient(to top, var(--color-abyss) 0%, transparent 100%); */
+  /* Removed to allow GlobalAmbientEffects to show through */
   pointer-events: none;
 }
 
@@ -1059,8 +1064,8 @@ body {
       rgba(255, 255, 255, 0.07) 0%,
       rgba(255, 255, 255, 0.03) 50%,
       rgba(255, 255, 255, 0.05) 100%);
-  backdrop-filter: blur(40px) saturate(1.2);
-  -webkit-backdrop-filter: blur(40px) saturate(1.2);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 28px;
   box-shadow:
@@ -1315,7 +1320,6 @@ body {
   min-height: 100vh;
   height: auto;
   /* Allow natural flow to eliminate forced scroll distance */
-  background-color: var(--color-abyss);
   padding-top: 50px;
   padding-bottom: 60px;
   /* Standard spacing before timeline */
@@ -1577,8 +1581,8 @@ body {
       rgba(255, 255, 255, 0.07) 0%,
       rgba(255, 255, 255, 0.03) 50%,
       rgba(255, 255, 255, 0.05) 100%);
-  backdrop-filter: blur(40px) saturate(1.2);
-  -webkit-backdrop-filter: blur(40px) saturate(1.2);
+  backdrop-filter: blur(20px) saturate(1.2);
+  -webkit-backdrop-filter: blur(20px) saturate(1.2);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 20px;
   box-shadow: 0 32px 80px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.1);
@@ -2244,12 +2248,10 @@ body {
 
 .timeline-section {
   position: relative;
-  width: 100%;
-  min-height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--color-abyss);
   padding: 40px 20px;
   overflow: hidden;
   z-index: 1;
