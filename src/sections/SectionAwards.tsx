@@ -32,6 +32,19 @@ export default function SectionAwards() {
         }
       })
 
+      // Section Snap effect when transitioning from Timeline to Awards
+      ScrollTrigger.create({
+        trigger: containerRef.current,
+        start: 'top bottom', // Trigger starts when top of Awards hits bottom of screen
+        end: 'top top',      // Trigger ends when top of Awards hits top of screen
+        snap: {
+          snapTo: 1,         // Snap to the 'end' of the trigger (top top)
+          duration: 0.6,
+          delay: 0.1,        // Wait slightly after they stop scrolling before snapping
+          ease: 'power2.inOut'
+        }
+      })
+
       tl.to(titleRef.current, {
         opacity: 1,
         y: 0,
