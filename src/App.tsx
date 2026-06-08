@@ -53,17 +53,31 @@ export default function App() {
   useMouseParallax()
 
   return (
-    <div className="min-h-screen bg-abyss font-body overflow-x-hidden text-white selection:bg-cyan-accent/20">
-      <GlobalAmbientEffects />
-      <HeroSection />
-      <SectionLegacy />
-      <SectionAbout />
-      <SectionWhyJoin />
-      <SectionTimeline />
-      <SectionAwards />
-      <SectionContact />
-      <SectionFAQ />
-      <SectionFooter />
-    </div>
+    <>
+      {/* Mobile "Under Development" Screen */}
+      <div className="md:hidden fixed inset-0 z-[99999] bg-[#010814] flex flex-col items-center justify-center p-6 text-center">
+        <h1 className="text-2xl font-bold text-[#00E5FF] mb-4" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
+          MOBILE VERSION
+        </h1>
+        <p className="text-gray-400 max-w-sm tracking-wide">
+          Under developing process...<br /><br />
+          For the full immersive experience, please view this website on a desktop browser.
+        </p>
+      </div>
+
+      {/* Main Desktop Application */}
+      <div className="hidden md:block min-h-screen bg-abyss font-body overflow-x-hidden text-white selection:bg-cyan-accent/20">
+        <GlobalAmbientEffects />
+        <HeroSection />
+        <SectionLegacy />
+        <SectionAbout />
+        <SectionWhyJoin />
+        <SectionTimeline />
+        <SectionAwards />
+        <SectionContact />
+        <SectionFAQ />
+        <SectionFooter />
+      </div>
+    </>
   )
 }
