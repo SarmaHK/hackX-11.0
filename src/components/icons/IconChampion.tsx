@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 export default function IconChampion({ className = '' }: { className?: string }) {
   return (

@@ -1,4 +1,4 @@
-import React from 'react';
+
 
 export default function IconSecondRunnerUp({ className = '' }: { className?: string }) {
   return (
