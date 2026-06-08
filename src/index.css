@@ -1693,12 +1693,18 @@ body {
 
 /* ── RIGHT PANEL ── */
 
-/* SVG fills the right column */
+.blueprint-wrapper {
+  position: relative;
+  display: flex;
+  height: min(75vh, 640px); /* Increased size slightly while preserving padding */
+  aspect-ratio: 400 / 680;
+  max-width: 100%;
+}
+
+/* SVG fills the wrapper */
 .blueprint-svg {
   width: 100%;
-  max-width: 360px;
-  /* Scaled down to fit static layout securely */
-  height: auto;
+  height: 100%;
 }
 
 /* Corner coordinate labels */
@@ -1736,7 +1742,7 @@ body {
     max-width: 100%;
   }
 
-  .blueprint-svg {
+  .blueprint-wrapper {
     max-width: 380px;
   }
 }
@@ -1750,7 +1756,7 @@ body {
     font-size: clamp(38px, 11vw, 58px);
   }
 
-  .blueprint-svg {
+  .blueprint-wrapper {
     max-width: 320px;
   }
 }

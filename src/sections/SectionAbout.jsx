@@ -150,8 +150,8 @@ export default function SectionAbout() {
       scrollTrigger: {
         trigger: sectionRef.current,
         start: 'top bottom', /* Starts animation as soon as the top of About section enters the bottom of the screen */
-        end: 'bottom bottom',
-        scrub: true,
+        end: 'bottom top', /* Lengthen scroll distance to slow down the frame change speed */
+        scrub: 1, /* Smooths the frame changing (takes 1 second to catch up) */
       },
       onUpdate: render
     })
@@ -231,16 +231,16 @@ export default function SectionAbout() {
 
             {/* ══════════ RIGHT: Holographic Blueprint ══════════ */}
             <div className="showcase-right">
+              <div className="blueprint-wrapper">
+                {/* Micro corner details */}
+                <div className="about-corner tl"><span>COORD // 14.59.12</span><br /><span>ATLANTIS ONLINE</span></div>
+                <div className="about-corner br"><span>INIT_SEQ 0x4F</span><br /><span>SYS NOMINAL</span></div>
 
-              {/* Micro corner details */}
-              <div className="about-corner tl"><span>COORD // 14.59.12</span><br /><span>ATLANTIS ONLINE</span></div>
-              <div className="about-corner br"><span>INIT_SEQ 0x4F</span><br /><span>SYS NOMINAL</span></div>
-
-              {/* ── SVG Blueprint Canvas ── */}
-              <svg
-                className="blueprint-svg"
-                viewBox="0 0 400 680"
-                xmlns="http://www.w3.org/2000/svg"
+                {/* ── SVG Blueprint Canvas ── */}
+                <svg
+                  className="blueprint-svg"
+                  viewBox="0 0 400 680"
+                  xmlns="http://www.w3.org/2000/svg"
                 onMouseMove={(e) => {
                   if (tooltipRef.current && activeHover) {
                     tooltipRef.current.style.left = `${e.clientX}px`
@@ -447,6 +447,7 @@ export default function SectionAbout() {
                 <line x1="390" y1="670" x2="370" y2="670" stroke="rgba(0,229,255,0.3)" strokeWidth="1" />
                 <line x1="390" y1="670" x2="390" y2="650" stroke="rgba(0,229,255,0.3)" strokeWidth="1" />
               </svg>
+              </div>
             </div>
 
           </div>
