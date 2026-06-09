@@ -8,6 +8,8 @@ import SectionTimeline from './sections/SectionTimeline'
 import SectionContact from './sections/SectionContact'
 import SectionFooter from './sections/SectionFooter'
 import SectionAwards from './sections/SectionAwards'
+import SectionWhoCanCompete from './sections/SectionWhoCanCompete'
+import SectionAmbassador from './sections/SectionAmbassador'
 import SectionFAQ from './sections/SectionFAQ'
 /* ═══════════════════════════════════════════════════════════════
    hackX 11.0
@@ -74,6 +76,8 @@ export default function App() {
         <SectionWhyJoin />
         <SectionTimeline />
         <SectionAwards />
+        <SectionWhoCanCompete />
+        <SectionAmbassador />
         <SectionContact />
         <SectionFAQ />
         <SectionFooter />

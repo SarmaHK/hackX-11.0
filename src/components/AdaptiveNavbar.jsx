@@ -84,7 +84,7 @@ export default function AdaptiveNavbar() {
       {/* ═══ Desktop / Tablet Navbar ═══ */}
       <header className="fixed top-0 left-1/2 -translate-x-1/2 z-50 hidden md:flex flex-col items-center w-full max-w-screen-2xl pointer-events-none px-4">
         <div
-          className="relative pt-4 flex flex-col items-center w-full pointer-events-auto"
+          className="relative pt-4 flex flex-col items-center pointer-events-auto"
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
         >
@@ -112,8 +112,9 @@ export default function AdaptiveNavbar() {
 
           {/* ── Expandable Navbar Pill ── */}
           <div
-            className={`navbar-glass transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden flex items-center justify-center -mt-2 ${isHovered ? 'w-full max-w-[800px] opacity-100' : 'w-full max-w-0 opacity-0'
-              }`}
+            className={`navbar-glass transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden flex items-center justify-center -mt-2 ${
+              isHovered ? 'w-[800px] max-w-[800px] opacity-100' : 'w-[800px] max-w-0 opacity-0'
+            }`}
             style={{ height: '64px', borderRadius: '24px' }}
           >
             <nav className="flex items-center gap-[80px] whitespace-nowrap min-w-max">

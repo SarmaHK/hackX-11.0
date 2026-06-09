@@ -1,9 +1,7 @@
 import { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import IconChampion from '../components/icons/IconChampion'
-import IconRunnerUp from '../components/icons/IconRunnerUp'
-import IconSecondRunnerUp from '../components/icons/IconSecondRunnerUp'
+
 import './awards.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -29,19 +27,6 @@ export default function SectionAwards() {
           start: 'top 70%',
           end: 'center center',
           toggleActions: 'play none none reverse',
-        }
-      })
-
-      // Section Snap effect when transitioning from Timeline to Awards
-      ScrollTrigger.create({
-        trigger: containerRef.current,
-        start: 'top bottom', // Trigger starts when top of Awards hits bottom of screen
-        end: 'top top',      // Trigger ends when top of Awards hits top of screen
-        snap: {
-          snapTo: 1,         // Snap to the 'end' of the trigger (top top)
-          duration: 0.6,
-          delay: 0.1,        // Wait slightly after they stop scrolling before snapping
-          ease: 'power2.inOut'
         }
       })
 
@@ -159,7 +144,7 @@ export default function SectionAwards() {
           >
             <div className="monument-content">
               <div className="relic-container runner-up-relic">
-                <IconRunnerUp className="relic-icon custom-relic-svg" />
+                <img src="/assets/2ndRunnerUpIcon.png" alt="2nd Place Relic" className="relic-icon custom-relic-image" />
               </div>
               <div className="monument-place">2nd Place</div>
               <h3 className="monument-title">Runner-Up</h3>
@@ -174,7 +159,7 @@ export default function SectionAwards() {
           >
             <div className="monument-content">
               <div className="relic-container champion-relic">
-                <IconChampion className="relic-icon custom-relic-svg" />
+                <img src="/assets/1stRunnerUpIcon.png" alt="1st Place Relic" className="relic-icon custom-relic-image" />
               </div>
               <div className="monument-place">1st Place</div>
               <h3 className="monument-title">Champion</h3>
@@ -189,7 +174,7 @@ export default function SectionAwards() {
           >
             <div className="monument-content">
               <div className="relic-container runner-up-relic">
-                <IconSecondRunnerUp className="relic-icon custom-relic-svg" />
+                <img src="/assets/3rdRunnerUpIcon.png" alt="3rd Place Relic" className="relic-icon custom-relic-image" />
               </div>
               <div className="monument-place">3rd Place</div>
               <h3 className="monument-title">Runner-Up</h3>

@@ -80,7 +80,7 @@ function EventBookletButton() {
 
 export default function HeroContent() {
   return (
-    <div className="absolute z-30 inset-0 flex flex-col items-center justify-center text-center px-6 pb-32 md:pb-48">
+    <div className="absolute z-30 inset-0 flex flex-col items-center justify-center text-center px-6 pb-40 md:pb-56">
 
       {/* ── Main Title: hackX 11.0 ── */}
       <motion.div
@@ -142,16 +142,53 @@ export default function HeroContent() {
         </span>
       </div>
 
-      {/* ── CTA Buttons ── */}
-      <motion.div
-        className="mt-20 md:mt-32 flex flex-col sm:flex-row items-center gap-4 sm:gap-6"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, ease, delay: 1.1 }}
-      >
-        <MagneticPrimaryButton />
-        <EventBookletButton />
-      </motion.div>
+      {/* ── Bottom Section: CTA Buttons & Scroll Down ── */}
+      <div className="absolute bottom-4 left-0 w-full px-6 flex flex-col items-center justify-center gap-8">
+        
+        {/* CTA Buttons */}
+        <motion.div
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1.2, ease, delay: 1.1 }}
+        >
+          <MagneticPrimaryButton />
+          <EventBookletButton />
+        </motion.div>
+
+        {/* Scroll Down Indicator */}
+        <motion.div 
+          className="flex flex-col items-center justify-center cursor-pointer opacity-80 hover:opacity-100 transition-opacity"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5, duration: 1 }}
+          onClick={() => document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' })}
+        >
+          <span className="text-[10px] uppercase tracking-[0.2em] text-[#00E5FF] font-bold mb-1">Scroll Down</span>
+          
+          <div className="flex flex-col items-center -space-y-3">
+            <motion.svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+              animate={{ y: [0, 4, 0], opacity: [0.2, 1, 0.2] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut", delay: 0 }}
+            >
+               <polyline points="5 8 12 15 19 8"></polyline>
+            </motion.svg>
+            <motion.svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+              animate={{ y: [0, 4, 0], opacity: [0.2, 1, 0.2] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut", delay: 0.2 }}
+            >
+               <polyline points="5 8 12 15 19 8"></polyline>
+            </motion.svg>
+            <motion.svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#00E5FF" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"
+              animate={{ y: [0, 4, 0], opacity: [0.2, 1, 0.2] }}
+              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut", delay: 0.4 }}
+            >
+               <polyline points="5 8 12 15 19 8"></polyline>
+            </motion.svg>
+          </div>
+        </motion.div>
+
+      </div>
     </div>
   )
 }

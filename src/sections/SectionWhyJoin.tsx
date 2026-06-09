@@ -1,6 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sprout, Users, Trophy, CircleDollarSign, ArrowRight } from 'lucide-react';
+import { Sprout, Users, Trophy, CircleDollarSign, ArrowRight, X } from 'lucide-react';
 
 const features = [
   {
@@ -48,6 +48,7 @@ const features = [
 export default function SectionWhyJoin() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+  const [showModal, setShowModal] = useState(false);
 
   // Auto-rotate the featured card
   useEffect(() => {
@@ -60,9 +61,9 @@ export default function SectionWhyJoin() {
   const activeFeature = features[activeIndex];
 
   return (
-    <section 
-      id="why-join" 
-      ref={sectionRef} 
+    <section
+      id="why-join"
+      ref={sectionRef}
       className="relative w-full py-24 md:py-32 lg:py-48 overflow-hidden flex flex-col items-center justify-center z-10"
     >
       {/* ── Background Elements ── */}
@@ -75,34 +76,36 @@ export default function SectionWhyJoin() {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-8">
 
           {/* Left Column: Content */}
-          <div className="flex flex-col items-start justify-center text-left w-full lg:w-[55%] xl:w-[60%] max-w-2xl xl:max-w-3xl">
+          <div className="flex flex-col items-start justify-center text-left w-full lg:w-[55%] xl:w-[60%] max-w-2xl xl:max-w-3xl self-stretch">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
               viewport={{ once: true, margin: "-100px" }}
-              className="glass-card w-full relative rounded-[32px] lg:rounded-[40px]"
+              className="glass-card w-full relative rounded-[32px] lg:rounded-[40px] flex flex-col items-start"
               style={{ padding: 'clamp(2.5rem, 5vw, 4rem)' }}
             >
               {/* Subtle accent gradient inside the glass card */}
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-400/5 to-transparent pointer-events-none rounded-[inherit] overflow-hidden" />
 
-              <h2 className="relative z-10 text-4xl md:text-5xl lg:text-[56px] font-display font-bold text-white mb-6 uppercase tracking-tight leading-tight flex flex-col items-start">
-                <span>What Is</span>
-                <span className="flex items-baseline gap-3">
-                  <span className="text-cyan-accent">HackX</span>
+              <h2 className="relative z-10 text-4xl md:text-5xl lg:text-[56px] font-display font-bold text-white mb-6 tracking-tight leading-tight flex flex-row items-baseline flex-wrap gap-3 md:gap-4 lg:gap-5">
+                <span className="uppercase">What Is</span>
+                <span className="flex items-baseline gap-2 md:gap-3">
+                  <span className="text-cyan-accent normal-case">hackX</span>
                   <span className="text-2xl lg:text-3xl text-slate-300 font-medium">11.0</span>
                 </span>
               </h2>
-              <p className="relative z-10 text-base lg:text-lg text-slate-300 font-body mb-10 leading-relaxed max-w-xl xl:max-w-2xl">
+              <p className="relative z-10 text-base lg:text-lg text-slate-300 font-body leading-relaxed max-w-xl xl:max-w-2xl">
                 hackX 11.0 is the flagship innovation and entrepreneurship challenge organized by IMSSA. It brings together universities, mentors, startups, and industry leaders to transform innovative ideas into real-world impact through a structured journey of collaboration, creation, and competition.
               </p>
 
-              <button className="relative z-10 btn-primary group">
-                <span className="relative z-10 flex items-center gap-2">
-                  Learn More About HackX <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-                </span>
-              </button>
+              <div className="mt-[200px] relative z-10 w-full">
+                <button onClick={() => setShowModal(true)} className="btn-glass group">
+                  <span className="relative z-10 flex items-center gap-2">
+                    Learn More About hackX <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                  </span>
+                </button>
+              </div>
             </motion.div>
           </div>
 
@@ -172,6 +175,83 @@ export default function SectionWhyJoin() {
 
         </div>
       </div>
+      {/* ═══ About hackX Modal ═══ */}
+      <AnimatePresence>
+        {showModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            onClick={() => setShowModal(false)}
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8"
+            style={{ background: 'rgba(0, 0, 0, 0.75)', backdropFilter: 'blur(8px)' }}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.98, y: 15 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.98, y: 15 }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              onClick={(e: React.MouseEvent) => e.stopPropagation()}
+              className="relative w-[95vw] max-w-[960px] rounded-[24px] overflow-hidden flex flex-col shadow-2xl border border-white/[0.08]"
+              style={{
+                background: 'rgba(5, 15, 35, 0.85)',
+                backdropFilter: 'blur(40px)',
+                WebkitBackdropFilter: 'blur(40px)'
+              }}
+            >
+              {/* Premium Soft Radial Atlantis Glow at the top */}
+              <div 
+                className="absolute top-0 left-0 right-0 h-[600px] pointer-events-none"
+                style={{ 
+                  background: 'radial-gradient(ellipse at top center, rgba(0, 229, 255, 0.12) 0%, transparent 70%)' 
+                }} 
+              />
+
+              {/* Close Button */}
+              <button 
+                onClick={(e) => { e.stopPropagation(); setShowModal(false); }}
+                className="absolute top-6 right-6 w-10 h-10 flex items-center justify-center rounded-full bg-white/[0.05] border border-white/[0.1] hover:bg-white/[0.15] text-white/60 hover:text-white transition-all duration-300 z-[999] hover:rotate-90 pointer-events-auto cursor-pointer"
+              >
+                <X size={20} strokeWidth={1.5} />
+              </button>
+
+              <div className="relative z-10 px-10 md:px-20 py-0 flex flex-col items-center text-center overflow-y-auto max-h-[85vh] custom-scrollbar">
+                
+                {/* ─── Top Spacer ─── */}
+                <div className="h-12 md:h-20 w-full shrink-0"></div>
+
+                {/* ─── SECTION 1: Header ─── */}
+                <h2 className="text-[48px] md:text-[64px] font-display font-bold tracking-tight drop-shadow-lg leading-tight flex items-center justify-center">
+                  <span>
+                    <span className="text-white">hack</span>
+                    <span className="text-[#ffb700]">X</span>
+                  </span>
+                </h2>
+
+                {/* ─── Divider 1 ─── */}
+                <div className="w-full max-w-[800px] border-b border-white/[0.08] my-10 shrink-0"></div>
+                
+                <div className="flex flex-col gap-6 text-slate-300 text-[15px] md:text-[17px] leading-[1.8] max-w-[800px] text-justify font-light">
+                  <p>
+                    <span className="text-white font-medium">hack</span><span className="text-[#ffb700] font-medium">X</span> is Sri Lanka's premier inter-university startup challenge, organised by the Industrial Management Science Students' Association at the Department of Industrial Management, University of Kelaniya. Since 2015, <span className="text-white font-medium">hack</span><span className="text-[#ffb700] font-medium">X</span> has brought together the sharpest undergraduate minds from across the country to do one thing: turn real problems into scalable, investable solutions.
+                  </p>
+                  <p>
+                    This is not a weekend sprint. It is a structured innovation journey through mentorship, business development, prototype building, and a Grand Finals stage in front of industry leaders, investors, and government officials.
+                  </p>
+                  <p>
+                    <span className="text-white font-medium">hack</span><span className="text-[#ffb700] font-medium">X</span> is not just for tech students. Whether your idea lives in healthcare, agriculture, finance, or education, if there is a technology-driven solution behind it, it belongs here.
+                  </p>
+                </div>
+                
+                {/* ─── Bottom Spacer ─── */}
+                <div className="h-12 md:h-20 w-full shrink-0"></div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </section>
   );
 }

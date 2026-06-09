@@ -16,6 +16,9 @@ export default function HeroSection() {
       <AdaptiveNavbar />
       <HeroContent />
       <HeroMascot />
+      
+      {/* Bottom Fade Transition to next section */}
+      <div className="absolute bottom-0 left-0 w-full h-48 lg:h-64 bg-gradient-to-t from-abyss to-transparent z-20 pointer-events-none" />
     </section>
   )
 }
