@@ -57,11 +57,8 @@ export default function SectionFAQ() {
 
   return (
     <section id="faq" className="faq-section">
-      {/* ── Background Elements ── */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        <div className="cps-ambient-glow"></div>
-      </div>
-
+      {/* ── Underwater Ambient Particles (matches Timeline) ── */}
+      <div className="section-bubbles" />
 
       <div className="faq-container">
         

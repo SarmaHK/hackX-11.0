@@ -10,6 +10,7 @@
   align-items: center;
   justify-content: center;
   padding: 4rem 1rem;
+  background: #001220;
 }
 
 .awards-video-bg {
@@ -32,11 +33,11 @@
   height: 100%;
   background: linear-gradient(
     180deg,
-    transparent 0%,
+    #001220 0%,
     rgba(0,10,20,.75) 15%,
     rgba(0,15,25,.55) 50%,
     rgba(0,10,20,.8) 85%,
-    transparent 100%
+    #001220 100%
   );
   z-index: 1;
 }

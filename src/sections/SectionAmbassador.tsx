@@ -70,9 +70,10 @@ export default function SectionAmbassador() {
   return (
     <section ref={sectionRef} className="amb-section" id="ambassador">
 
-      {/* Background Ambient Orbs */}
-      <div className="amb-ambient-orb amb-orb-1" />
-      <div className="amb-ambient-orb amb-orb-2" />
+      {/* ── Underwater Ambient Particles (matches Timeline) ── */}
+      <div className="section-bubbles" />
+
+      {/* Background Ambient Orbs removed - caused visible color seam */}
 
       <div className="amb-content-wrapper">
 
@@ -139,8 +140,15 @@ export default function SectionAmbassador() {
           <h3 className="amb-cta-title">Become a Campus Ambassador</h3>
           <p className="amb-cta-subtitle">Applications open June 23.</p>
 
-          <a href="#ambassador-apply" className="compete-cta-btn">
-            <span className="relative z-10">Apply as an Ambassador</span>
+          <a 
+            href="#ambassador-apply" 
+            className="group relative overflow-hidden inline-flex items-center justify-center w-[280px] h-[48px] rounded-full bg-white text-black font-bold text-[13px] uppercase tracking-[0.1em] transition-all duration-300 hover:scale-105 hover:bg-slate-100 shadow-[0_0_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_35px_rgba(255,255,255,0.3)] mt-6"
+          >
+            <span className="relative z-10 flex items-center gap-3">
+              Apply as Ambassador
+              <ArrowRight size={16} className="group-hover:translate-x-1.5 transition-transform duration-300" />
+            </span>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#00E5FF]/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700 ease-in-out" />
           </a>
         </div>
 

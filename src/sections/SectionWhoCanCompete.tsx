@@ -1,7 +1,7 @@
 import { useRef, useEffect } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { ChevronRight, Rocket } from 'lucide-react'
+import { ChevronRight, Rocket, ArrowRight } from 'lucide-react'
 import './who-can-compete.css'
 
 gsap.registerPlugin(ScrollTrigger)
@@ -46,11 +46,11 @@ export default function SectionWhoCanCompete() {
 
   return (
     <section ref={containerRef} className="compete-section" id="who-can-compete">
+
+      {/* ── Underwater Ambient Particles (matches Timeline) ── */}
+      <div className="section-bubbles" />
       
       <div className="compete-content-wrapper">
-        {/* Ambient Orbs for Glass Effect */}
-        <div className="compete-ambient-orb orb-1"></div>
-        <div className="compete-ambient-orb orb-2"></div>
         
         <div className="compete-layout-grid">
           
@@ -98,8 +98,10 @@ export default function SectionWhoCanCompete() {
             <p className="compete-cta-desc">
               Gather your crew, refine your idea, and prepare for the ultimate innovation expedition. The ocean of opportunities awaits.
             </p>
-            <a href="#register" className="compete-cta-btn" style={{ marginTop: '1rem' }}>
-              <span className="relative z-10">Register Now</span>
+            <a href="#register" className="btn-glass group" style={{ marginTop: '1rem' }}>
+              <span className="relative z-10 flex items-center gap-2">
+                Register Now <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+              </span>
             </a>
           </div>
 

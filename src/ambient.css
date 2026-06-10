@@ -6,10 +6,48 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 0; /* Deepest background layer */
+  z-index: 0;
   pointer-events: none;
   overflow: hidden;
-  background: radial-gradient(circle at 50% 100%, rgba(0, 30, 60, 0.4), transparent 70%);
+  /* Base deep ocean gradient covering every section */
+  background: linear-gradient(to bottom, #010814, #001220 30%, #001a33 70%, #010814);
+}
+
+/* ── Global Dot-Grid Rising Particles (matches timeline bubbles) ── */
+.ambient-dot-grid {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(#00E5FF 1px, transparent 1px);
+  background-size: 100px 100px;
+  background-attachment: fixed;
+  opacity: 0.08;
+}
+
+/* ── Global Volumetric Sway Rays (matches timeline light rays) ── */
+.ambient-sway-rays {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(0, 229, 255, 0.04), transparent 60%);
+  mask-image: repeating-linear-gradient(to right, transparent, rgba(0,0,0,1) 5%, transparent 10%);
+  -webkit-mask-image: repeating-linear-gradient(to right, transparent, rgba(0,0,0,1) 5%, transparent 10%);
+  opacity: 0.4;
+  transform-origin: top center;
+  animation: swayRays 10s ease-in-out infinite alternate;
+}
+
+@keyframes floatUp {
+  0%   { transform: translateY(0); }
+  100% { transform: translateY(-100px); }
+}
+
+@keyframes swayRays {
+  0%   { transform: skewX(-5deg); }
+  100% { transform: skewX(5deg); }
 }
 
 /* ── Light Rays ── */

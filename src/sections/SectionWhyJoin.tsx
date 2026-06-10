@@ -65,12 +65,10 @@ export default function SectionWhyJoin() {
       id="why-join"
       ref={sectionRef}
       className="relative w-full py-24 md:py-32 lg:py-48 overflow-hidden flex flex-col items-center justify-center z-10"
+      style={{ background: '#001220' }}
     >
-      {/* ── Background Elements ── */}
-      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* Background Ambient Glow (matching Contact section) */}
-        <div className="cps-ambient-glow"></div>
-      </div>
+      {/* ── Underwater Ambient Particles (matches Timeline) ── */}
+      <div className="section-bubbles" />
 
       <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-8">

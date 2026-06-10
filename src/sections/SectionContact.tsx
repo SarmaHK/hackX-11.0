@@ -68,8 +68,8 @@ export default function SectionContact() {
 
   return (
     <section id="contact" className="contact-premium-section" ref={sectionRef}>
-      {/* Background ambient glow */}
-      <div className="cps-ambient-glow"></div>
+      {/* Ambient Environment - matches Timeline section */}
+      <div className="section-bubbles" />
 
       <div className="cps-container">
         

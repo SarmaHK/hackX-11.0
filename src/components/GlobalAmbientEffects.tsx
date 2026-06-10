@@ -26,6 +26,12 @@ export default function GlobalAmbientEffects() {
 
   return (
     <div className="global-ambient-container">
+      {/* Global Deep-Ocean Dot-Grid Rising Particles */}
+      <div className="ambient-dot-grid" />
+
+      {/* Global Volumetric Sway Rays */}
+      <div className="ambient-sway-rays" />
+
       {/* Water Caustics Overlay */}
       <div className="ambient-caustics" />
 

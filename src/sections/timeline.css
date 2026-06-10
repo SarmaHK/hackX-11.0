@@ -1,0 +1,460 @@
+/* ═══════════════════════════════════════════════════════════════
+   SECTION: TIMELINE (Cinematic Atlantis Layout)
+   ═══════════════════════════════════════════════════════════════ */
+
+.timeline-section-cinematic {
+  position: relative;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px 100px 20px;
+  z-index: 1;
+  background: #001220; /* same flat ocean color as all other sections */
+}
+
+/* ── Deep Sea Ambient Elements ── */
+.timeline-ambient-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.timeline-bubbles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-image: radial-gradient(#00E5FF 1px, transparent 1px);
+  background-size: 100px 100px;
+  opacity: 0.15;
+  animation: floatUp 30s linear infinite;
+}
+
+@keyframes floatUp {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-100px); }
+}
+
+.timeline-light-rays {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 800px;
+  background: linear-gradient(to bottom, rgba(0, 229, 255, 0.05), transparent);
+  mask-image: repeating-linear-gradient(to right, transparent, rgba(0,0,0,1) 5%, transparent 10%);
+  -webkit-mask-image: repeating-linear-gradient(to right, transparent, rgba(0,0,0,1) 5%, transparent 10%);
+  opacity: 0.5;
+  transform-origin: top center;
+  animation: swayRays 10s ease-in-out infinite alternate;
+}
+
+@keyframes swayRays {
+  0% { transform: skewX(-5deg); }
+  100% { transform: skewX(5deg); }
+}
+
+.timeline-container {
+  position: relative;
+  width: 100%;
+  max-width: 1100px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ── Header ── */
+.timeline-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.timeline-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.3em;
+  color: #00E5FF;
+  margin-bottom: 24px;
+}
+
+.timeline-badge-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #00E5FF;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #00E5FF;
+  animation: tl-pulse 2s infinite;
+}
+
+.timeline-title {
+  font-family: "Clash Display", sans-serif;
+  font-size: clamp(48px, 6vw, 72px);
+  font-weight: 700;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.tl-outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.5);
+  margin-right: 0.2em;
+}
+
+.tl-solid {
+  color: #00E5FF;
+  text-shadow: 0 0 30px rgba(0, 229, 255, 0.4);
+}
+
+/* ── Timeline Track ── */
+.timeline-track {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+.timeline-line-bg {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: rgba(0, 229, 255, 0.1);
+  transform: translateX(-50%);
+}
+
+.timeline-line-glow {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(to bottom, #00E5FF, transparent);
+  box-shadow: 0 0 15px #00E5FF;
+  transform: translateX(-50%);
+  transform-origin: top;
+}
+
+/* ── Timeline Items ── */
+.timeline-item {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 120px;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Node */
+.timeline-node {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  transition: all 0.5s ease;
+}
+
+.timeline-node-inner {
+  width: 10px;
+  height: 10px;
+  background: rgba(0, 229, 255, 0.3);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.3);
+  z-index: 2;
+  transition: all 0.5s ease;
+}
+
+.timeline-node-pulse {
+  position: absolute;
+  inset: -6px;
+  border: 1px solid rgba(0, 229, 255, 0.1);
+  border-radius: 50%;
+  transition: all 0.5s ease;
+}
+
+.timeline-item.active .timeline-node-inner {
+  background: #00E5FF;
+  box-shadow: 0 0 20px #00E5FF;
+}
+
+.timeline-item.active .timeline-node-pulse {
+  border-color: rgba(0, 229, 255, 0.8);
+  animation: node-pulse 2s infinite;
+}
+
+@keyframes node-pulse {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(3); opacity: 0; }
+}
+
+/* Card */
+.timeline-content {
+  width: calc(50% - 60px); /* Leave room for diver */
+  padding: 30px;
+  background: rgba(0, 15, 30, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 229, 255, 0.1);
+  border-radius: 16px;
+  position: relative;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  z-index: 20;
+  
+  /* Initial Dim State */
+  opacity: 0.5;
+  filter: brightness(0.6);
+  transform: translateY(20px);
+}
+
+.tl-left .timeline-content {
+  margin-right: auto;
+  text-align: right;
+}
+
+.tl-right .timeline-content {
+  margin-left: auto;
+  text-align: left;
+}
+
+/* Connecting small lines */
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 1px;
+  background: rgba(0, 229, 255, 0.2);
+  transition: all 0.5s ease;
+}
+
+.tl-left .timeline-content::before {
+  right: -50px;
+}
+
+.tl-right .timeline-content::before {
+  left: -50px;
+}
+
+/* Active Card Effect */
+.timeline-item.active .timeline-content {
+  opacity: 1;
+  filter: brightness(1);
+  transform: translateY(0) scale(1.02);
+  border-color: rgba(0, 229, 255, 0.6);
+  box-shadow: 0 0 40px rgba(0, 229, 255, 0.2), inset 0 0 20px rgba(0, 229, 255, 0.1);
+}
+
+.timeline-item.active .timeline-content::before {
+  background: rgba(0, 229, 255, 0.8);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.5);
+}
+
+.timeline-item.active .timeline-content::after {
+  content: '';
+  position: absolute;
+  top: -1px; left: -1px; right: -1px; bottom: -1px;
+  border-radius: 16px;
+  background: linear-gradient(45deg, transparent, rgba(0, 229, 255, 0.4), transparent);
+  z-index: -1;
+  animation: borderGlow 3s linear infinite;
+}
+
+@keyframes borderGlow {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}
+
+/* Card Typography */
+.timeline-date {
+  font-family: "Space Mono", monospace;
+  font-size: 13px;
+  letter-spacing: 0.15em;
+  color: #00E5FF;
+  margin-bottom: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.timeline-event-title {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 12px;
+}
+
+.timeline-event-desc {
+  font-family: "Satoshi", "Inter", sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* ── Diver Container ── */
+.timeline-diver-wrapper {
+  position: absolute;
+  top: 50%;
+  width: calc(50% - 60px);
+  height: 0;
+  display: flex;
+  align-items: center;
+  z-index: 10; /* Behind timeline-content (z-index 20) */
+  pointer-events: none;
+}
+
+.tl-left .timeline-diver-wrapper {
+  right: 0;
+  justify-content: flex-start;
+  padding-left: 20px;
+}
+
+.tl-right .timeline-diver-wrapper {
+  left: 0;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.diver-container {
+  position: relative;
+  width: 320px;
+  opacity: 0; /* Hidden by default */
+  transform: translateY(20px);
+  filter: drop-shadow(0 0 20px rgba(0, 229, 255, 0.3));
+}
+
+.diver-sprite {
+  width: 100%;
+  height: auto;
+  animation: diverFloat 4s ease-in-out infinite alternate;
+}
+
+.tl-left .diver-container {
+  /* Diver faces left toward the left card. 
+     The original image might face left or right natively. 
+     Assuming diver faces left originally. If it faces right, we flip it.
+     Let's apply scaling dynamically in JS or assume face left. 
+     Wait, I will handle flipping in JSX via a class. */
+}
+
+@keyframes diverFloat {
+  0% { transform: translateY(-5px) rotate(-1deg); }
+  100% { transform: translateY(5px) rotate(1deg); }
+}
+
+/* ── Flashlight ── */
+.flashlight-origin {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1px; height: 1px;
+}
+
+.flashlight-beam {
+  position: absolute;
+  width: 1200px;
+  height: 1200px;
+  margin-top: -600px;
+  margin-left: -600px;
+  transform-origin: center center;
+  opacity: 0;
+  
+  /* Creates a thicker, more prominent volumetric core beam */
+  background: conic-gradient(
+    from -8deg at 50% 50%,
+    transparent 0deg,
+    rgba(0, 180, 255, 0.2) 5deg,
+    rgba(255, 255, 255, 0.95) 8deg,
+    rgba(0, 180, 255, 0.2) 11deg,
+    transparent 16deg
+  );
+  
+  /* Smooth radial fade extended slightly to make the beam longer */
+  mask-image: radial-gradient(circle at 50% 50%, black 0%, rgba(0,0,0,0.85) 15%, rgba(0,0,0,0.4) 35%, transparent 55%);
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, black 0%, rgba(0,0,0,0.85) 15%, rgba(0,0,0,0.4) 35%, transparent 55%);
+  
+  mix-blend-mode: screen;
+  filter: blur(4px);
+  pointer-events: none;
+}
+
+.flashlight-glow {
+  position: absolute;
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,229,255,0.7) 25%, transparent 70%);
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Dynamic origins based on diver facing direction */
+.diver-left .flashlight-beam,
+.diver-left .flashlight-glow {
+  top: 42%;
+  left: 14%;
+}
+
+.diver-right .flashlight-beam,
+.diver-right .flashlight-glow {
+  top: 42%;
+  left: 86%;
+}
+
+/* ── Responsive Mobile ── */
+@media (max-width: 768px) {
+  .timeline-track {
+    padding-left: 20px;
+  }
+  .timeline-line-bg,
+  .timeline-line-glow {
+    left: 20px;
+  }
+  .timeline-item {
+    justify-content: flex-start;
+    margin-bottom: 80px;
+  }
+  .timeline-node {
+    left: 20px;
+  }
+  .timeline-content {
+    width: calc(100% - 60px);
+    margin-left: 60px !important;
+    text-align: left !important;
+  }
+  .timeline-content::before {
+    width: 40px !important;
+    left: -40px !important;
+    right: auto !important;
+  }
+  
+  /* Hide diver on mobile to keep layout clean */
+  .timeline-diver-wrapper {
+    display: none;
+  }
+}

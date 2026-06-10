@@ -172,8 +172,8 @@ export default function SectionAbout() {
 
   return (
     <section id="about" className="about-section" ref={sectionRef}>
-      {/* Background Ambient Glow (matching Contact section) */}
-      <div className="cps-ambient-glow"></div>
+      {/* ── Underwater Ambient Particles (matches Timeline) ── */}
+      <div className="section-bubbles" />
 
       <div className="about-sticky-wrapper">
         <div className="about-top-badge-container">
