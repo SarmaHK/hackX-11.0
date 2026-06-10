@@ -22,13 +22,13 @@
   align-items: center;
 }
 
-/* Ambient Orbs */
 .amb-ambient-orb {
   position: absolute;
   border-radius: 50%;
   filter: blur(100px);
   z-index: -1;
   pointer-events: none;
+  display: none; /* Hidden to match localhost flat look */
   animation: floatOrb 20s infinite ease-in-out alternate;
 }
 
