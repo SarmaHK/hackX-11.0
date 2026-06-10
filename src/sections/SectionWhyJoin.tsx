@@ -64,11 +64,23 @@ export default function SectionWhyJoin() {
     <section
       id="why-join"
       ref={sectionRef}
-      className="relative w-full py-24 md:py-32 lg:py-48 overflow-hidden flex flex-col items-center justify-center z-10"
+      className="relative w-full mt-16 md:mt-24 lg:mt-40 mb-8 md:mb-12 lg:mb-16 pt-24 md:pt-32 lg:pt-48 pb-20 md:pb-24 lg:pb-32 flex flex-col items-center justify-center z-10 overflow-hidden"
       style={{ background: '#001220' }}
     >
+      {/* ── Cinematic Background (Matches Legacy Section) ── */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <img 
+          src="/assets/legacybg.png" 
+          alt="hackX Background" 
+          className="w-full h-full object-cover opacity-80" 
+        />
+        <div className="absolute inset-0 bg-[#001220]/20" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#001220] via-transparent to-[#001220] opacity-90" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,#001220_100%)] opacity-60" />
+      </div>
+
       {/* ── Underwater Ambient Particles (matches Timeline) ── */}
-      <div className="section-bubbles" />
+      <div className="section-bubbles relative z-10 pointer-events-none" />
 
       <div className="relative z-10 container mx-auto px-6 md:px-12 lg:px-20 max-w-7xl">
         <div className="flex flex-col lg:flex-row items-center justify-between gap-16 lg:gap-8">

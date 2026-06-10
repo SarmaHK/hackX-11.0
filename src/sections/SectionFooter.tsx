@@ -1,4 +1,4 @@
-import { useRef, useMemo } from 'react';
+import { useRef, useState } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ChevronUp } from 'lucide-react';
 
@@ -29,14 +29,14 @@ export default function SectionFooter() {
 
   const scrollToTop = () => window.scrollTo({ top: 0, behavior: 'smooth' });
 
-  const bubbles = useMemo(() =>
+  const [bubbles] = useState(() =>
     Array.from({ length: 15 }).map(() => ({
       left: `${Math.random() * 100}%`,
       bottom: `${Math.random() * -10}%`,
       size: `${Math.random() * 5 + 3}px`,
       dur: `${Math.random() * 5 + 6}s`,
       del: `${Math.random() * 6}s`,
-    })), []
+    }))
   );
 
   return (

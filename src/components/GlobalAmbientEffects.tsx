@@ -1,9 +1,9 @@
-import { useMemo } from 'react';
+import { useState } from 'react';
 import '../ambient.css';
 
 export default function GlobalAmbientEffects() {
   // Generate random values once to avoid hydration mismatches or infinite re-renders
-  const bubbles = useMemo(() => {
+  const [bubbles] = useState(() => {
     return Array.from({ length: 25 }).map((_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
@@ -11,9 +11,9 @@ export default function GlobalAmbientEffects() {
       delay: `${Math.random() * 15}s`,
       duration: `${Math.random() * 10 + 10}s` // 10s to 20s
     }));
-  }, []);
+  });
 
-  const dustParticles = useMemo(() => {
+  const [dustParticles] = useState(() => {
     return Array.from({ length: 40 }).map((_, i) => ({
       id: i,
       left: `${Math.random() * 100}%`,
@@ -22,7 +22,7 @@ export default function GlobalAmbientEffects() {
       delay: `${Math.random() * 20}s`,
       duration: `${Math.random() * 15 + 15}s` // 15s to 30s
     }));
-  }, []);
+  });
 
   return (
     <div className="global-ambient-container">

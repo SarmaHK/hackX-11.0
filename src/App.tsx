@@ -30,14 +30,14 @@ function useMouseParallax() {
     const tick = () => {
       const dx = tx - cx
       const dy = ty - cy
-      
+
       if (Math.abs(dx) > 0.001 || Math.abs(dy) > 0.001) {
         cx += dx * 0.025
         cy += dy * 0.025
         document.documentElement.style.setProperty('--mx', cx.toFixed(4))
         document.documentElement.style.setProperty('--my', cy.toFixed(4))
       }
-      
+
       raf = requestAnimationFrame(tick)
     }
 
@@ -54,21 +54,25 @@ function useMouseParallax() {
 export default function App() {
   useMouseParallax()
 
+  const SHOW_MOBILE_UNDER_DEV = true; // Toggle this boolean to turn the mobile screen on or off
+
   return (
     <>
       {/* Mobile "Under Development" Screen */}
-      <div className="md:hidden fixed inset-0 z-[99999] bg-[#010814] flex flex-col items-center justify-center p-6 text-center">
-        <h1 className="text-2xl font-bold text-[#00E5FF] mb-4" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
-          MOBILE VERSION
-        </h1>
-        <p className="text-gray-400 max-w-sm tracking-wide">
-          Under developing process...<br /><br />
-          For the full immersive experience, please view this website on a desktop browser.
-        </p>
-      </div>
+      {SHOW_MOBILE_UNDER_DEV && (
+        <div className="md:hidden fixed inset-0 z-[99999] bg-[#010814] flex flex-col items-center justify-center p-6 text-center">
+          <h1 className="text-2xl font-bold text-[#00E5FF] mb-4" style={{ fontFamily: '"Space Grotesk", sans-serif' }}>
+            MOBILE VERSION
+          </h1>
+          <p className="text-gray-400 max-w-sm tracking-wide">
+            Under developing process...<br /><br />
+            For the full immersive experience, please view this website on a desktop browser.
+          </p>
+        </div>
+      )}
 
       {/* Main Desktop Application */}
-      <div className="hidden md:block min-h-screen bg-abyss font-body overflow-x-hidden text-white selection:bg-cyan-accent/20">
+      <div className={`${SHOW_MOBILE_UNDER_DEV ? 'hidden md:block' : 'block'} min-h-screen bg-abyss font-body overflow-x-hidden text-white selection:bg-cyan-accent/20`}>
         <GlobalAmbientEffects />
         <HeroSection />
         <SectionLegacy />

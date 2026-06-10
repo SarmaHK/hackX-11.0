@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Info, Layers, Calendar, Star, HelpCircle } from 'lucide-react'
 
 /* ═══════════════════════════════════════════════════════════════
    PREMIUM NAVBAR — hackX 11.0
@@ -20,6 +21,17 @@ const sectionNames = {
   archives: 'Archives',
   faq: 'FAQ',
   register: 'Register'
+}
+
+const getIcon = (item) => {
+  switch(item.toLowerCase()) {
+    case 'about': return Info;
+    case 'tracks': return Layers;
+    case 'timeline': return Calendar;
+    case 'sponsors': return Star;
+    case 'faq': return HelpCircle;
+    default: return Info;
+  }
 }
 
 const ease = [0.16, 1, 0.3, 1]
@@ -111,31 +123,38 @@ export default function AdaptiveNavbar() {
           </div>
 
           {/* ── Expandable Navbar Pill ── */}
-          <div
-            className={`navbar-glass transition-all duration-[800ms] ease-[cubic-bezier(0.16,1,0.3,1)] overflow-hidden flex items-center justify-center -mt-2 ${
-              isHovered ? 'w-[800px] max-w-[800px] opacity-100' : 'w-[800px] max-w-0 opacity-0'
-            }`}
-            style={{ height: '64px', borderRadius: '24px' }}
-          >
-            <nav className="flex items-center gap-[80px] whitespace-nowrap min-w-max">
-              {NAV_ITEMS.map((item) => {
-                const isActive = activeSection.toLowerCase() === item.toLowerCase();
-                return (
-                  <a
-                    key={item}
-                    href={`#${item.toLowerCase()}`}
-                    onClick={() => setIsHovered(false)}
-                    className={`relative px-5 py-2 text-[15px] font-semibold transition-all duration-300 ${isActive
-                      ? 'text-white'
-                      : 'text-white/60 hover:text-white'
-                      }`}
-                  >
-                    {item}
-                  </a>
-                );
-              })}
-            </nav>
-          </div>
+          <AnimatePresence>
+            {isHovered && (
+              <motion.div
+                initial={{ opacity: 0, y: -20, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -10, scale: 0.98 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="navbar-glass absolute overflow-hidden flex items-center justify-center w-[800px]"
+                style={{ height: '64px', borderRadius: '24px', top: '75px' }}
+              >
+                <nav className="flex items-center gap-[80px] whitespace-nowrap min-w-max">
+                  {NAV_ITEMS.map((item, i) => {
+                    const isActive = activeSection.toLowerCase() === item.toLowerCase();
+                    return (
+                      <a
+                        key={item}
+                        href={`#${item.toLowerCase()}`}
+                        onClick={() => setIsHovered(false)}
+                        className={`relative px-5 py-2.5 text-[15px] rounded-xl font-semibold transition-all duration-300 ${
+                          isActive
+                            ? 'text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.4)]'
+                            : 'text-white/70 hover:text-white'
+                          }`}
+                      >
+                        {item}
+                      </a>
+                    );
+                  })}
+                </nav>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </header>
 
@@ -176,29 +195,34 @@ export default function AdaptiveNavbar() {
         <AnimatePresence>
           {menuOpen && (
             <motion.div
-              className="mt-3 py-6 px-6 bg-[rgba(2,6,15,0.96)] backdrop-blur-[40px] z-40 flex flex-col items-center border border-[rgba(255,255,255,0.06)]"
-              style={{ borderRadius: '18px' }}
+              className="absolute top-16 right-0 p-4 bg-white/[0.05] backdrop-blur-xl z-40 flex flex-col items-center border border-white/[0.15] shadow-[0_8px_32px_rgba(0,0,0,0.37)] w-[280px]"
+              style={{ borderRadius: '24px' }}
               initial={{ opacity: 0, y: -15, scale: 0.95 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -10, scale: 0.98 }}
               transition={{ duration: 0.3, ease }}
             >
-              <nav className="flex flex-col items-center gap-5 w-full">
+              <nav className="space-y-2 w-full relative z-30">
                 {NAV_ITEMS.map((item, i) => {
                   const isActive = activeSection.toLowerCase() === item.toLowerCase();
+                  const Icon = getIcon(item);
                   return (
                     <motion.a
                       key={item}
                       href={`#${item.toLowerCase()}`}
                       onClick={() => setMenuOpen(false)}
-                      className={`text-[16px] tracking-[0.05em] transition-all duration-300 w-full text-center py-2.5 rounded-xl uppercase font-semibold ${isActive ? 'text-white bg-[rgba(255,255,255,0.1)]' : 'text-white/55 hover:text-white hover:bg-[rgba(255,255,255,0.05)]'
-                        }`}
+                      className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl font-medium transition-colors ${
+                        isActive 
+                          ? 'bg-white text-neutral-900' 
+                          : 'text-white hover:bg-white/20'
+                      }`}
                       style={{ fontFamily: 'var(--font-body)' }}
-                      initial={{ opacity: 0, y: 12 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: i * 0.04, duration: 0.4, ease }}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: i * 0.04, duration: 0.3, ease }}
                     >
-                      {item}
+                      <Icon className="w-5 h-5" />
+                      <span>{item}</span>
                     </motion.a>
                   );
                 })}

@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
@@ -12,6 +12,15 @@ export default function SectionAwards() {
   const monumentRefs = useRef<(HTMLDivElement | null)[]>([])
   const particlesRef = useRef<HTMLDivElement>(null)
   const videoRef = useRef<HTMLVideoElement>(null)
+
+  const [particles] = useState(() => 
+    [...Array(30)].map(() => ({
+      left: `${Math.random() * 100}%`,
+      width: `${Math.random() * 4 + 2}px`,
+      height: `${Math.random() * 4 + 2}px`,
+      bottom: `${-Math.random() * 20}%`,
+    }))
+  )
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -116,15 +125,15 @@ export default function SectionAwards() {
 
       {/* Ambient Particles */}
       <div className="ambient-particles" ref={particlesRef}>
-        {[...Array(30)].map((_, i) => (
+        {particles.map((particle, i) => (
           <div 
             key={i} 
             className="ambient-particle"
             style={{
-              left: `${Math.random() * 100}%`,
-              width: `${Math.random() * 4 + 2}px`,
-              height: `${Math.random() * 4 + 2}px`,
-              bottom: `${-Math.random() * 20}%`,
+              left: particle.left,
+              width: particle.width,
+              height: particle.height,
+              bottom: particle.bottom,
             }}
           />
         ))}

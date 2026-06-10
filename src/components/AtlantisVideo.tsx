@@ -1,4 +1,4 @@
-import { useRef, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 /* ─── God Rays (Enhanced) ─── */
 function GodRays() {
@@ -15,7 +15,7 @@ function GodRays() {
 
 /* ─── Particles (Enhanced — more particles) ─── */
 function Particles() {
-  const dots = useRef(
+  const [dots] = useState(() => 
     Array.from({ length: 28 }, (_, i) => ({
       id: i,
       s: Math.random() * 2.5 + 0.8,
@@ -24,7 +24,7 @@ function Particles() {
       dur: Math.random() * 22 + 18,
       del: Math.random() * 20,
     }))
-  ).current
+  )
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden parallax-medium" style={{ zIndex: 14 }}>
@@ -41,7 +41,7 @@ function Particles() {
 
 /* ─── Bubbles ─── */
 function Bubbles() {
-  const items = useRef(
+  const [items] = useState(() => 
     Array.from({ length: 10 }, (_, i) => ({
       id: i,
       s: Math.random() * 6 + 2,
@@ -49,7 +49,7 @@ function Bubbles() {
       del: Math.random() * 25,
       dur: Math.random() * 20 + 16,
     }))
-  ).current
+  )
 
   return (
     <div className="absolute inset-0 pointer-events-none overflow-hidden" style={{ zIndex: 12 }}>

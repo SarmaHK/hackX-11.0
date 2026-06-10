@@ -6,38 +6,56 @@ const faqs = [
   {
     num: '01',
     title: 'REGISTRATION',
-    question: 'How do I register?',
-    answer: 'Registration will open shortly. Keep an eye on our social media and this website for the official registration link. Teams can register via the dedicated portal once live.'
+    question: 'Registration & Deadlines',
+    answer: (
+      <>
+        <strong>i. Who can register for hackX 11.0?</strong><br />
+        Any currently enrolled undergraduate from a Sri Lankan university or higher education institute. All team members must be from the same institution.<br /><br />
+        <strong>ii. Is there a registration fee?</strong><br />
+        No. hackX 11.0 is completely free to enter.<br /><br />
+        <strong>iii. When do registrations close?</strong><br />
+        Proposals must be submitted by July 31. Register early to give your team time to prepare a strong submission.
+      </>
+    )
   },
   {
     num: '02',
-    title: 'ELIGIBILITY',
-    question: 'Who can participate?',
-    answer: 'HackX 11.0 is open to all university undergraduates across Sri Lanka. If you have a passion for innovation and a valid student ID, you are welcome to dive in.'
+    title: 'TEAMS',
+    question: 'Team Size & Eligibility',
+    answer: (
+      <>
+        <strong>i. How many people can be in a team?</strong><br />
+        Minimum two, maximum five members.<br /><br />
+        <strong>ii. Can students from non-tech faculties participate?</strong><br />
+        Absolutely. hackX welcomes innovation from any discipline. Healthcare, agriculture, finance, education, any field is fair game as long as there is a technology-driven solution behind it.
+      </>
+    )
   },
   {
     num: '03',
-    title: 'TEAMS',
-    question: 'How many members can be in a team?',
-    answer: 'A team must consist of a minimum of 3 and a maximum of 4 members from the same university.'
+    title: 'PROPOSALS',
+    question: 'Ideas & Submissions',
+    answer: (
+      <>
+        <strong>i. Do I need a finished product to register?</strong><br />
+        No. You just need an idea at registration. A working prototype is required by the ideaX semi-finals stage.<br /><br />
+        <strong>ii. What do I need to submit after registering?</strong><br />
+        A structured startup proposal by July 31, along with a one to two minute product introduction video.
+      </>
+    )
   },
   {
     num: '04',
-    title: 'ACCOMMODATION',
-    question: 'Is accommodation provided?',
-    answer: 'Yes, overnight accommodation and resting areas will be provided for all finalists during the hackathon phase at the venue.'
-  },
-  {
-    num: '05',
-    title: 'MEALS',
-    question: 'Will meals be provided?',
-    answer: 'All main meals, snacks, and midnight refreshments will be fully provided for participants during the physical hackathon.'
-  },
-  {
-    num: '06',
-    title: 'PRIZES',
-    question: 'What can participants win?',
-    answer: 'Beyond the prestigious HackX championship title, winners will receive exciting cash prizes, exclusive swags, and potential incubation opportunities.'
+    title: 'PROGRAM',
+    question: 'designX & Grand Finals',
+    answer: (
+      <>
+        <strong>i. What is designX?</strong><br />
+        An exclusive four-part workshop series for semi-finalists, covering business modelling, startup structuring, and market validation, delivered by industry professionals.<br /><br />
+        <strong>ii. What can winners expect at the Grand Finals?</strong><br />
+        Winners receive cash prizes, exclusive recognition on a national stage, and direct exposure to real investor opportunities through our partner network.
+      </>
+    )
   }
 ]
 
