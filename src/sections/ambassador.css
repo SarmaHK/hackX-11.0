@@ -9,6 +9,7 @@
   padding: 8rem 2rem;
   overflow: hidden;
   background: radial-gradient(ellipse at bottom, rgba(0, 229, 255, 0.05) 0%, transparent 60%);
+  isolation: isolate;
 }
 
 .amb-content-wrapper {
